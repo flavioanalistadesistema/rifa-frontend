@@ -3,6 +3,7 @@ import { AdminLoginPage } from "../pages/AdminLoginPage";
 import { PublicRafflePage } from "../pages/PublicRafflePage";
 import { RequireAdmin } from "./RequireAdmin";
 import { AdminDashboardPage } from "../pages/AdminDashboardPage";
+import { AdminLayout } from "../components/AdminLayout";
 
 export const router = createBrowserRouter([
   {
@@ -17,8 +18,13 @@ export const router = createBrowserRouter([
     element: <RequireAdmin />,
     children: [
       {
-        path: "/admin",
-        element: <AdminDashboardPage />,
+        element: <AdminLayout />,
+        children: [
+          {
+            path: "/admin",
+            element: <AdminDashboardPage />,
+          }
+        ]
       }
     ]
   }
