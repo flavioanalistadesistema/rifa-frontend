@@ -4,6 +4,7 @@ import { PublicRafflePage } from "../pages/PublicRafflePage";
 import { RequireAdmin } from "./RequireAdmin";
 import { AdminDashboardPage } from "../pages/AdminDashboardPage";
 import { AdminLayout } from "../components/AdminLayout";
+import { AdminRaffleDetailsPage } from "../pages/AdminRaffleDetailsPage";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
           {
             path: "/admin",
             element: <AdminDashboardPage />,
+          },
+          {
+            path: "/admin/raffles/:raffleId",
+            element: <AdminRaffleDetailsPage />,
           }
         ]
       }
