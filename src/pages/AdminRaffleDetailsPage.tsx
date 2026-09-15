@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router-dom";
 import { getRaffleDetails } from "../services/raffles";
+import styles from "./AdminRaffleDetailsPage.module.css";
 
 export function AdminRaffleDetailsPage() {
     const { raffleId } = useParams<{ raffleId: string }>();
@@ -29,19 +30,56 @@ export function AdminRaffleDetailsPage() {
 
     return (
         <div>
-            <Link to="/admin">Voltar</Link>
+            <Link className={styles.backLink} to="/admin">
+                Voltar para rifas
+            </Link>
 
-            <h2>{data.raffle.title}</h2>
-            <p>{data.raffle.description}</p>
+            <header className={styles.header}>
+                <div>
+                    <h2>{data.raffle.title}</h2>
+                    <p>{data.raffle.description}</p>
+                </div>
 
-            <section>
-                <h3>Resumo</h3>
-                <ul>
-                    <li>Total: {data.summary.total}</li>
-                    <li>Vendidos: {data.summary.sold}</li>
-                    <li>Reservados: {data.summary.reserved}</li>
-                    <li>Disponíveis: {data.summary.available}</li>
-                </ul>
+                <span className={styles.status}>{data.raffle.status}</span>
+            </header>
+
+            <section className={styles.summary}>
+                <article className={styles.summaryCard}>
+                    <span>Total</span>
+                    <strong>{data.summary.total}</strong>
+                </article>
+
+                <article className={styles.summaryCard}>
+                    <span>Vendidos</span>
+                    <strong>{data.summary.sold}</strong>
+                </article>
+
+                <article className={styles.summaryCard}>
+                    <span>Reservados</span>
+                    <strong>{data.summary.reserved}</strong>
+                </article>
+
+                <article className={styles.summaryCard}>
+                    <span>Disponíveis</span>
+                    <strong>{data.summary.available}</strong>
+                </article>
+            </section>
+
+            <section className={styles.sections}>
+                <article className={styles.panel}>
+                    <h3>Pagamentos</h3>
+                    <p>Em breve: lista de pagamentos pendentes para confirmação.</p>
+                </article>
+
+                <article className={styles.panel}>
+                    <h3>Prêmios</h3>
+                    <p>Em breve: edição dos prêmios e fotos.</p>
+                </article>
+
+                <article className={styles.panel}>
+                    <h3>Sorteio</h3>
+                    <p>Em breve: controle de sorteio manual.</p>
+                </article>
             </section>
         </div>
     );
