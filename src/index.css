@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;500;700;800&display=swap");
+
+:root {
+  --bg: #140c07;
+  --bg-soft: #21160f;
+  --card: #1d140e;
+  --card-strong: #120c08;
+  --line: #493425;
+  --line-strong: #8c5c18;
+  --text: #fff7ed;
+  --muted: #c8b8a6;
+  --accent: #ff9f1a;
+  --accent-dark: #9a6518;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #3a1f08 0, var(--bg) 420px);
+  color: var(--text);
+  font-family: Inter, system-ui, sans-serif;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
