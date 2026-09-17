@@ -105,8 +105,9 @@ export function PublicRafflePage() {
 
                 <SelectedNumbersPanel
                     selectedNumbers={selectedNumbers}
-                    ticketPrice={data.raffle.ticketPrice}
+                    ticketPrice={Number(data.raffle.ticketPrice)}
                     onContinue={() => setIsBuyerFormVisible(true)}
+                    onClear={() => setSelectedNumbers([])}
                 />
 
                 {isBuyerFormVisible && (

@@ -1,0 +1,61 @@
+.page {
+  display: grid;
+  gap: 24px;
+}
+
+.backLink {
+  width: fit-content;
+  color: var(--muted);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.backLink:hover {
+  color: var(--accent);
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.header h2 {
+  margin: 0;
+  font-family: Oswald, sans-serif;
+  font-size: 2.6rem;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.header p {
+  margin: 10px 0 0;
+  color: var(--muted);
+}
+
+.status {
+  display: inline-flex;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 159, 26, 0.16);
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 900;
+}
+
+@media (max-width: 760px) {
+  .header {
+    flex-direction: column;
+  }
+}

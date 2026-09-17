@@ -52,6 +52,9 @@ export function AdminRaffleDetailsPage() {
                     <Link className={styles.drawLink} to={`/admin/raffles/${raffleId}/draw`}>
                         Abrir sorteio
                     </Link>
+                    <Link className={styles.drawLink} to={`/admin/raffles/${raffleId}/prizes`}>
+                        Gerenciar prêmios
+                    </Link>
                     <span className={styles.status}>{data.raffle.status}</span>
                 </div>
             </header>

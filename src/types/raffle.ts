@@ -50,6 +50,7 @@ export type Raffle = {
 
 export type RaffleDetailsResponse = {
   raffle: Raffle;
+  prizes: Prize[];
   summary: {
     total: number;
     sold: number;

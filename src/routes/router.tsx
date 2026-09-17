@@ -6,6 +6,7 @@ import { AdminDashboardPage } from "../pages/AdminDashboardPage";
 import { AdminLayout } from "../components/admin/AdminLayout";
 import { AdminRaffleDetailsPage } from "../pages/AdminRaffleDetailsPage";
 import { AdminDrawPainelPage } from "../pages/AdminDrawPainelPage";
+import { AdminPrizesPainelPage } from "../pages/AdminPrizesPainelPage";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
           {
             path: "/admin/raffles/:raffleId/draw",
             element: <AdminDrawPainelPage />,
+          },
+          {
+            path: "/admin/raffles/:raffleId/prizes",
+            element: <AdminPrizesPainelPage />,
           }
         ]
       }

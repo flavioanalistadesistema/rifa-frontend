@@ -1,0 +1,155 @@
+.panel {
+  display: grid;
+  gap: 24px;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.header p {
+  margin: 6px 0 0;
+  color: #8f8a81;
+}
+
+.form {
+  display: grid;
+  gap: 16px;
+  padding: 20px;
+  border: 1px solid #2f261d;
+  border-radius: 8px;
+  background: #17100c;
+}
+
+.form label {
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+  color: #d8c9b2;
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+  border: 1px solid #3d3126;
+  border-radius: 6px;
+  background: #0f0a07;
+  color: #f8f1e7;
+  padding: 12px;
+  font: inherit;
+}
+
+.form input:focus,
+.form textarea:focus {
+  outline: 2px solid #f59e0b;
+  outline-offset: 2px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.actions button,
+.cardActions button {
+  border: 0;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.actions button[type="submit"] {
+  background: #f59e0b;
+  color: #150c05;
+}
+
+.actions button[type="button"],
+.cardActions button {
+  background: #2a2119;
+  color: #f8f1e7;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error {
+  margin: 0;
+  color: #f87171;
+}
+
+.list {
+  display: grid;
+  gap: 16px;
+}
+
+.empty {
+  margin: 0;
+  color: #8f8a81;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  overflow: hidden;
+  border: 1px solid #2f261d;
+  border-radius: 8px;
+  background: #17100c;
+}
+
+.card img,
+.placeholder {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  background: #0f0a07;
+}
+
+.placeholder {
+  display: grid;
+  place-items: center;
+  color: #8f8a81;
+}
+
+.cardContent {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+}
+
+.cardContent h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.cardContent p {
+  margin: 0;
+  color: #c7bba7;
+}
+
+.cardActions {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.deleteButton {
+  background: #3b1616 !important;
+  color: #fecaca !important;
+}
+
+.fileName {
+  margin: -6px 0 0;
+  color: #c7bba7;
+  font-size: 13px;
+}
+
+@media (max-width: 720px) {
+  .card {
+    grid-template-columns: 1fr;
+  }
+}

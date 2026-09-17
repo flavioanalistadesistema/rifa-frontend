@@ -1,29 +1,31 @@
 const apiUrl = import.meta.env.VITE_API_URL;
 
-if (!apiUrl) {
-    throw new Error("VITE_API_URL não configurada.");
-}
+type UploadType = "prize" | "receipt";
 
-type UploadFileResponse = {
-    message: string;
-    path: string;
+type UploadResponse = {
     url: string;
+    path: string;
 };
 
-export async function uploadFile(file: File, type: "prize" | "receipt") {
+export async function uploadFile(
+    file: File,
+    type: UploadType,
+    token?: string
+) {
     const formData = new FormData();
     formData.append("file", file);
 
     const response = await fetch(`${apiUrl}/uploads?type=${type}`, {
         method: "POST",
+        headers: token ? { Authorization: `Bearer ${token}` } : undefined,
         body: formData,
     });
 
-    const data = await response.json().catch(() => null);
+    const data = await response.json();
 
     if (!response.ok) {
-        throw new Error(data?.message ?? "Erro ao enviar arquivo.");
+        throw new Error(data.message ?? "Erro ao enviar arquivo.");
     }
 
-    return data as UploadFileResponse;
+    return data as UploadResponse;
 }
