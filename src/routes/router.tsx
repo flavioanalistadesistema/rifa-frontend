@@ -3,8 +3,9 @@ import { AdminLoginPage } from "../pages/AdminLoginPage";
 import { PublicRafflePage } from "../pages/PublicRafflePage";
 import { RequireAdmin } from "./RequireAdmin";
 import { AdminDashboardPage } from "../pages/AdminDashboardPage";
-import { AdminLayout } from "../components/AdminLayout";
+import { AdminLayout } from "../components/admin/AdminLayout";
 import { AdminRaffleDetailsPage } from "../pages/AdminRaffleDetailsPage";
+import { AdminDrawPainelPage } from "../pages/AdminDrawPainelPage";
 
 export const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
           {
             path: "/admin/raffles/:raffleId",
             element: <AdminRaffleDetailsPage />,
+          },
+          {
+            path: "/admin/raffles/:raffleId/draw",
+            element: <AdminDrawPainelPage />,
           }
         ]
       }

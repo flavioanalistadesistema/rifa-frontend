@@ -1,5 +1,5 @@
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import { removeAuthToken } from "../services/auth-token";
+import { removeAuthToken } from "../../services/auth-token";
 import styles from "./AdminLayout.module.css";
 
 export function AdminLayout() {

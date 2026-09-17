@@ -1,0 +1,87 @@
+.empty {
+  color: #665f58;
+}
+
+.list {
+  display: grid;
+  gap: 12px;
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 16px;
+  border: 1px solid #ded8cf;
+  border-radius: 12px;
+  background: #fdfbf8;
+}
+
+.status {
+  display: inline-flex;
+  margin-bottom: 8px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #f5e7c8;
+  color: #7a4d0b;
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+
+.card h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.card p {
+  margin: 6px 0 0;
+  color: #665f58;
+}
+
+.actions {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.actions a,
+.actions button {
+  min-height: 36px;
+  padding: 0 12px;
+  border: 1px solid #ded8cf;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #171412;
+  cursor: pointer;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.actions button:first-of-type {
+  background: #22c55e;
+  border-color: #22c55e;
+  color: #071208;
+}
+
+.actions button:last-of-type {
+  background: #ef4444;
+  border-color: #ef4444;
+  color: #fff;
+}
+
+.actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+@media (max-width: 760px) {
+  .card {
+    flex-direction: column;
+  }
+
+  .actions {
+    justify-content: flex-start;
+  }
+}

@@ -1,4 +1,4 @@
-import type { RaffleNumber } from "../types/raffle";
+import type { RaffleNumber } from "../../types/raffle";
 import styles from "./NumbersGrid.module.css";
 
 type NumbersGridProps = {

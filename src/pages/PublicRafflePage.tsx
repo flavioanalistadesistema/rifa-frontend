@@ -1,14 +1,14 @@
 import { getRaffleDetails } from "../services/raffles";
 import styles from "./PublicRafflePage.module.css";
-import { NumbersGrid } from "../components/NumbersGrid";
-import { PrizeCard } from "../components/PrizeCard";
-import { RaffleSummary } from "../components/RaffleSummary";
-import { ParticipationInfo } from "../components/ParticipationInfo";
-import { DrawResult } from "../components/DrawResult";
+import { NumbersGrid } from "../components/numbers/NumbersGrid";
+import { PrizeCard } from "../components/prize/PrizeCard";
+import { RaffleSummary } from "../components/raffle/RaffleSummary";
+import { ParticipationInfo } from "../components/participation/ParticipationInfo";
+import { DrawResult } from "../components/draw/DrawResult";
 import { SelectedNumbersPanel } from "../components/SelectedNumbersPanel";
-import { BuyerForm } from "../components/BuyerForm";
+import { BuyerForm } from "../components/byer/BuyerForm";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { ReservationSuccess } from "../components/ReservationSuccess";
+import { ReservationSuccess } from "../components/reservation/ReservationSuccess";
 
 import { useState } from "react";
 

@@ -17,7 +17,7 @@ export async function apiFetch<TResponse>(
     const response = await fetch(`${apiUrl}${path}`, {
         ...fetchOptions,
         headers: {
-            "Content-Type": "application/json",
+            ...(fetchOptions.body ? { "Content-Type": "application/json" } : {}),
             ...(token ? { Authorization: `Bearer ${token}` } : {}),
             ...headers,
         },

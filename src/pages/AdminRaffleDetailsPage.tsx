@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router-dom";
 import { getRaffleDetails } from "../services/raffles";
 import styles from "./AdminRaffleDetailsPage.module.css";
+import { getAdminPayments } from "../services/admin-payments";
+import { AdminPaymentsPanel } from "../components/admin/AdminPaymentsPanel";
 
 export function AdminRaffleDetailsPage() {
     const { raffleId } = useParams<{ raffleId: string }>();
@@ -9,6 +11,12 @@ export function AdminRaffleDetailsPage() {
     const { data, isLoading, isError, error } = useQuery({
         queryKey: ["admin", "raffle", raffleId],
         queryFn: () => getRaffleDetails(raffleId ?? ""),
+        enabled: Boolean(raffleId),
+    });
+
+    const paymentsQuery = useQuery({
+        queryKey: ["admin", "payments", raffleId],
+        queryFn: () => getAdminPayments({ raffleId }),
         enabled: Boolean(raffleId),
     });
 
@@ -40,7 +48,12 @@ export function AdminRaffleDetailsPage() {
                     <p>{data.raffle.description}</p>
                 </div>
 
-                <span className={styles.status}>{data.raffle.status}</span>
+                <div className={styles.headerActions}>
+                    <Link className={styles.drawLink} to={`/admin/raffles/${raffleId}/draw`}>
+                        Abrir sorteio
+                    </Link>
+                    <span className={styles.status}>{data.raffle.status}</span>
+                </div>
             </header>
 
             <section className={styles.summary}>
@@ -64,21 +77,20 @@ export function AdminRaffleDetailsPage() {
                     <strong>{data.summary.available}</strong>
                 </article>
             </section>
-
             <section className={styles.sections}>
                 <article className={styles.panel}>
                     <h3>Pagamentos</h3>
-                    <p>Em breve: lista de pagamentos pendentes para confirmação.</p>
-                </article>
 
-                <article className={styles.panel}>
-                    <h3>Prêmios</h3>
-                    <p>Em breve: edição dos prêmios e fotos.</p>
-                </article>
+                    {paymentsQuery.isLoading && <p>Carregando pagamentos...</p>}
 
-                <article className={styles.panel}>
-                    <h3>Sorteio</h3>
-                    <p>Em breve: controle de sorteio manual.</p>
+                    {paymentsQuery.isError && <p>{paymentsQuery.error.message}</p>}
+
+                    {paymentsQuery.data && (
+                        <AdminPaymentsPanel
+                            raffleId={raffleId}
+                            payments={paymentsQuery.data.payments}
+                        />
+                    )}
                 </article>
             </section>
         </div>

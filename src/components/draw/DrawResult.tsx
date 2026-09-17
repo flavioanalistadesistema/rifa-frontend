@@ -1,4 +1,4 @@
-import type { RaffleResult } from "../types/raffle";
+import type { RaffleResult } from "../../types/raffle";
 import styles from "./DrawResult.module.css";
 
 type DrawResultProps = {

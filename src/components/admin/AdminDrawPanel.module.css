@@ -1,0 +1,136 @@
+.panel {
+  display: grid;
+  gap: 12px;
+}
+
+.panel p {
+  margin: 0;
+  color: #665f58;
+}
+
+.meta {
+  font-weight: 800;
+}
+
+.numberRoller {
+  display: grid;
+  width: min(100%, 420px);
+  min-height: 210px;
+  margin: 20px auto 8px;
+  place-items: center;
+  align-content: center;
+  gap: 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 18px;
+  background: linear-gradient(145deg, #fff7ed, #ffe1b0);
+  box-shadow: 0 14px 30px rgba(140, 92, 24, 0.16);
+  color: #171412;
+  text-align: center;
+}
+
+.numberRoller span {
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.numberRoller strong {
+  font-family: Oswald, sans-serif;
+  font-size: clamp(5rem, 16vw, 8rem);
+  line-height: 1;
+}
+
+.error {
+  color: #b91c1c;
+  font-weight: 700;
+}
+
+.help {
+  font-size: 0.9rem;
+}
+
+.panel button {
+  width: min(100%, 280px);
+  justify-self: center;
+  min-height: 42px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 10px;
+  background: #171412;
+  color: #fff7ed;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.panel button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.result {
+  width: min(100%, 640px);
+  margin: 16px auto;
+  padding: 28px;
+  border: 1px solid #22c55e;
+  border-radius: 14px;
+  background: #ecfdf5;
+  text-align: center;
+}
+
+.result span {
+  display: block;
+  color: #047857;
+  font-size: 0.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.winningNumber {
+  display: block;
+  margin-top: 6px;
+  color: #065f46;
+  font-family: Oswald, sans-serif;
+  font-size: clamp(3.5rem, 8vw, 5.5rem);
+  line-height: 1;
+}
+
+.winnerDetails {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+  text-align: left;
+}
+
+.winnerDetails div {
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid rgba(4, 120, 87, 0.2);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.winnerDetails span {
+  margin-bottom: 4px;
+  color: #047857;
+  font-size: 0.7rem;
+}
+
+.winnerDetails strong {
+  display: block;
+  overflow-wrap: anywhere;
+  color: #065f46;
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
+@media (max-width: 640px) {
+  .result {
+    padding: 22px 16px;
+  }
+
+  .winnerDetails {
+    grid-template-columns: 1fr;
+  }
+}

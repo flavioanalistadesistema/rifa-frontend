@@ -1,4 +1,4 @@
-import type { Prize } from "../types/raffle";
+import type { Prize } from "../../types/raffle";
 import styles from "./PrizeCard.module.css";
 
 type PrizeCardProps = {
