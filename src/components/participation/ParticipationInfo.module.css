@@ -61,6 +61,7 @@
 }
 
 .copyButton {
+  min-width: 148px;
   min-height: 44px;
   padding: 0 22px;
   border: 0;
@@ -73,6 +74,11 @@
 
 .copyButton:hover {
   filter: brightness(1.05);
+}
+
+.copied {
+  background: #4ade80;
+  color: #102416;
 }
 
 .totalRaised {

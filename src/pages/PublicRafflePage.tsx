@@ -9,15 +9,40 @@ import { SelectedNumbersPanel } from "../components/SelectedNumbersPanel";
 import { BuyerForm } from "../components/byer/BuyerForm";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { ReservationSuccess } from "../components/reservation/ReservationSuccess";
+import { Link } from "react-router-dom";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const raffleId = import.meta.env.VITE_RAFFLE_ID;
 
 export function PublicRafflePage() {
     const [selectedNumbers, setSelectedNumbers] = useState<number[]>([]);
     const [isBuyerFormVisible, setIsBuyerFormVisible] = useState(false);
+    const buyerFormAnchorRef = useRef<HTMLDivElement>(null);
     const queryClient = useQueryClient();
+
+    useEffect(() => {
+        if (!isBuyerFormVisible) {
+            return;
+        }
+
+        const scrollToBuyerForm = window.setTimeout(() => {
+            const buyerForm = buyerFormAnchorRef.current;
+
+            if (!buyerForm) {
+                return;
+            }
+
+            const top = buyerForm.getBoundingClientRect().top + window.scrollY - 24;
+
+            window.scrollTo({
+                top,
+                behavior: "smooth",
+            });
+        }, 0);
+
+        return () => window.clearTimeout(scrollToBuyerForm);
+    }, [isBuyerFormVisible]);
 
     const { data, isLoading, isError, error } = useQuery({
         queryKey: ["raffle", raffleId],
@@ -59,6 +84,11 @@ export function PublicRafflePage() {
         <main className={styles.page}>
             <div className={styles.container}>
                 <header className={styles.header}>
+                    <div className={styles.headerTop}>
+                        <Link className={styles.adminLink} to="/admin">
+                            Área administrativa
+                        </Link>
+                    </div>
                     <div>
                         <p className={styles.eyebrow}>Rifa oficial</p>
                         <h1 className={styles.title}>{data.raffle.title}</h1>
@@ -111,21 +141,23 @@ export function PublicRafflePage() {
                 />
 
                 {isBuyerFormVisible && (
-                    <BuyerForm
-                        raffleId={data.raffle.id}
-                        selectedNumbers={selectedNumbers}
-                        ticketPrice={data.raffle.ticketPrice}
-                        onSuccess={() => {
-                            setReservationSuccess({
-                                numbers: selectedNumbers,
-                            });
+                    <div ref={buyerFormAnchorRef} className={styles.buyerFormAnchor}>
+                        <BuyerForm
+                            raffleId={data.raffle.id}
+                            selectedNumbers={selectedNumbers}
+                            ticketPrice={data.raffle.ticketPrice}
+                            onSuccess={() => {
+                                setReservationSuccess({
+                                    numbers: selectedNumbers,
+                                });
 
-                            setSelectedNumbers([]);
-                            setIsBuyerFormVisible(false);
+                                setSelectedNumbers([]);
+                                setIsBuyerFormVisible(false);
 
-                            queryClient.invalidateQueries({ queryKey: ["raffle", raffleId] });
-                        }}
-                    />
+                                queryClient.invalidateQueries({ queryKey: ["raffle", raffleId] });
+                            }}
+                        />
+                    </div>
                 )}
 
                 {reservationSuccess && (

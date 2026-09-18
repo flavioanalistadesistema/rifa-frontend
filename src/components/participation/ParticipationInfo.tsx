@@ -1,4 +1,5 @@
 import styles from "./ParticipationInfo.module.css";
+import { useState } from "react";
 
 type ParticipationInfoProps = {
   pixKey: string;
@@ -11,10 +12,20 @@ export function ParticipationInfo({
   ticketPrice,
   sold,
 }: ParticipationInfoProps) {
+  const [isPixKeyCopied, setIsPixKeyCopied] = useState(false);
   const totalRaised = Number(ticketPrice) * sold;
 
   async function handleCopyPixKey() {
-    await navigator.clipboard.writeText(pixKey);
+    try {
+      await navigator.clipboard.writeText(pixKey);
+      setIsPixKeyCopied(true);
+
+      window.setTimeout(() => {
+        setIsPixKeyCopied(false);
+      }, 2000);
+    } catch {
+      setIsPixKeyCopied(false);
+    }
   }
 
   return (
@@ -37,8 +48,12 @@ export function ParticipationInfo({
           <small className={styles.pixHint}>Pagamento manual via PIX</small>
         </div>
 
-        <button className={styles.copyButton} type="button" onClick={handleCopyPixKey}>
-          Copiar chave
+        <button
+          className={`${styles.copyButton} ${isPixKeyCopied ? styles.copied : ""}`}
+          type="button"
+          onClick={handleCopyPixKey}
+        >
+          {isPixKeyCopied ? "Chave copiada" : "Copiar chave"}
         </button>
       </div>
 
