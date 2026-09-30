@@ -57,7 +57,7 @@ export function ParticipationInfo({
         </button>
       </div>
 
-      <p className={styles.totalRaised}>
+      {/* <p className={styles.totalRaised}>
         Total arrecadado até agora:{" "}
         <strong>
           {totalRaised.toLocaleString("pt-BR", {
@@ -65,7 +65,7 @@ export function ParticipationInfo({
             currency: "BRL",
           })}
         </strong>
-      </p>
+      </p> */}
     </section>
   );
 }
