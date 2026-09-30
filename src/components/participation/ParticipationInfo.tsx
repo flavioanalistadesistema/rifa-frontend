@@ -10,10 +10,10 @@ type ParticipationInfoProps = {
 export function ParticipationInfo({
   pixKey,
   ticketPrice,
-  sold,
+  // sold,
 }: ParticipationInfoProps) {
   const [isPixKeyCopied, setIsPixKeyCopied] = useState(false);
-  const totalRaised = Number(ticketPrice) * sold;
+  // const totalRaised = Number(ticketPrice) * sold;
 
   async function handleCopyPixKey() {
     try {
